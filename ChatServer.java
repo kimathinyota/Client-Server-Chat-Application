@@ -47,8 +47,8 @@ public class ChatServer{
 			
 	
 		}catch (IOException e) {
-            System.exit(1);
-        }
+            		System.exit(1);
+        	}
 	
 	}
 
