@@ -11,7 +11,7 @@ public class ChatProtocol {
  
     private int state = INITIAL;
    
-    String returnRightOfOperator(String input){
+    String returnRightOfOperator(String input){ // e.g. for INTERPRET clear z; this method will return clear z
 		state = 0;
 		if(input==null){
 			return "Rules for using this chat stream: Type CALCULATE expression to return calculated value of input expression or Type INTERPRET source-code or file-name to interpret KEBB source code or Just write a normal message  ";
@@ -31,7 +31,7 @@ public class ChatProtocol {
 				
 	}
 	
-	String calculate(String expression){
+	String calculate(String expression){ // this function will return the value of the input mathematical expression in string form
 		try{
 			InterpretBareBones myInterpreter = new InterpretBareBones();
 			Integer val = myInterpreter.returnCalculationValue(expression); //this method evaluates expressions 
@@ -41,7 +41,7 @@ public class ChatProtocol {
 		}
 	}
 	
-	String interpret(String input){
+	String interpret(String input){ //this will interpret KEBB (Kimathi's Extended Bare Bones) 
 		try{
 			InterpretBareBones myInterpreter = new InterpretBareBones();
 			input = input.trim();
@@ -58,17 +58,16 @@ public class ChatProtocol {
 	}
 	
  
-    public String processInput(String input) {
-		if(input=="Bye"){
+    public String processInput(String input) { //this method will be used to generate server response to a client's message/request
+		if(input=="Bye")
 			return input;
 		}
-        String output = null;
 		String rightPart = returnRightOfOperator(input);
 		if(state==CALCULATE){
 			return calculate(rightPart);
 		}else if(state==INTERPRET){
 			return interpret(input);
 		}
-        return rightPart;
+        	return rightPart;
     }
 }
