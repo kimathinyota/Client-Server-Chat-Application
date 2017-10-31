@@ -39,13 +39,12 @@ public class ChatClient{
 			}
 	
 		}catch (UnknownHostException e) {
-            System.err.println("Don't know about host " + hostname);
-            System.exit(1);
-        } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to " +
-                hostname);
-            System.exit(1);
-        }
+           		System.err.println("Don't know about host " + hostname);
+            		System.exit(1);
+		}catch (IOException e) {
+            		System.err.println("Couldn't get I/O for the connection to " + hostname);
+            		System.exit(1);
+        	}
 
 	}
 }
